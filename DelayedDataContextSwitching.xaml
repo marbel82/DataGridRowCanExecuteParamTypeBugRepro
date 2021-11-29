@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataGridRowCanExecuteParamTypeBugRepro"
         mc:Ignorable="d"
-        Title="DelayedDataContextSwitching" Height="450" Width="800">
+        Title="DelayedDataContextSwitching - Example 1 - DelegateCommand&lt;object&gt;" Height="450" Width="800">
     <DockPanel>
         <StackPanel Margin="5">
             <Button Content="Switch" Click="SwitchButton_Click"/>

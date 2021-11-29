@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CanExecureBugFixNamespace"
         mc:Ignorable="d"
-        Title="CanExecureBugFix" Height="450" Width="800">
+        Title="CanExecureBugFix - Example 2 - x:Shared=&quot;False&quot;" Height="450" Width="800">
     <Window.Resources>
         <!-- x:Shared causes that I get a new DataGrid object each time -->
             <DataTemplate DataType="{x:Type local:ICatalog}" x:Shared="False">
