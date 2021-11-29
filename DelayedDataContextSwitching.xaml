@@ -14,6 +14,8 @@
             <Button Content="GC" Click="GCButton_Click"/>
         </StackPanel>
         <TextBlock DockPanel.Dock="Top" Text="{Binding Title}"/>
+        <!-- Curiosity: When you change CanUserAddRows to True, and see CanExecute parameter type, the type will be MS.Internal.NamedObject. But this is not surprising. You need to implement the InitializingNewItem event define your own type. -->
+        
         <DataGrid x:Name="dataGrid" ItemsSource="{Binding Items}" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>

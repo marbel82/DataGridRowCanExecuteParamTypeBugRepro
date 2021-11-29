@@ -31,21 +31,22 @@ namespace DataGridRowCanExecuteParamTypeBugRepro
         public string Title { get; } = "Dogs catalog";
         public ObservableCollection<Dog> Items { get; } = new ObservableCollection<Dog>();
 
-        public DelegateCommand<Dog> RemoveCommand { get; }
+        // I want DelegateCommand<Dog> here, but this causes an exception, when CanRemoveExecute is called
+        public DelegateCommand<object> RemoveCommand { get; }
 
         public DogsCatalog()
         {
-            RemoveCommand = new DelegateCommand<Dog>(RemoveExecute, CanRemoveExecute);
+            RemoveCommand = new DelegateCommand<object>(RemoveExecute, CanRemoveExecute);
         }
 
-        private void RemoveExecute(Dog item)
+        private void RemoveExecute(object item)
         {
-            Items.Remove(item);
+            Items.Remove((Dog)item);
         }
 
-        private bool CanRemoveExecute(Dog item)
+        private bool CanRemoveExecute(object item)
         {
-            return true;
+            return item is null or Dog; // Try breakpoint here, and look at `this` and `item` types
         }
     }
 
@@ -54,21 +55,22 @@ namespace DataGridRowCanExecuteParamTypeBugRepro
         public string Title { get; } = "Cows catalog";
         public ObservableCollection<Cow> Items { get; } = new ObservableCollection<Cow>();
 
-        public DelegateCommand<Cow> RemoveCommand { get; }
+        // I want DelegateCommand<Cow> here, but this causes an exception when CanRemoveExecute is called
+        public DelegateCommand<object> RemoveCommand { get; }
 
         public CowsCatalog()
         {
-            RemoveCommand = new DelegateCommand<Cow>(RemoveExecute, CanRemoveExecute);
+            RemoveCommand = new DelegateCommand<object>(RemoveExecute, CanRemoveExecute);
         }
 
-        private void RemoveExecute(Cow item)
+        private void RemoveExecute(object item)
         {
-            Items.Remove(item);
+            Items.Remove((Cow)item);
         }
 
-        private bool CanRemoveExecute(Cow item)
+        private bool CanRemoveExecute(object item)
         {
-            return true;
+            return item is null or Cow; // Try breakpoint here, and look at `this` and `item` types
         }
     }
 
